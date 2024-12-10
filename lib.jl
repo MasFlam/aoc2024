@@ -28,3 +28,29 @@ function makegrid(lines:: AbstractVector{<:AbstractString}; bg:: Char = '.', sen
 		return grid
 	end
 end
+
+struct Windows
+	vector:: Union{AbstractVector, AbstractString}
+	winlen:: Integer
+end
+
+# Returns an iterator going through all subarrays (or substrings) of length winlen.
+windows(vector:: Union{AbstractVector, AbstractString}, winlen:: Integer) = Windows(vector, winlen)
+
+function Base.iterate(w:: Windows)
+	if w.winlen <= length(w.vector)
+		(view(w.vector, 1:w.winlen), 2)
+	else
+		nothing
+	end
+end
+
+function Base.iterate(w:: Windows, idx:: Int)
+	if idx + w.winlen - 1 <= length(w.vector)
+		(view(w.vector, idx:idx + w.winlen - 1), idx + 1)
+	else
+		nothing
+	end
+end
+
+Base.length(w:: Windows) = max(0, length(w.vector) - w.winlen)

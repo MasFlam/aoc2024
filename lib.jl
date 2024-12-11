@@ -29,6 +29,28 @@ function makegrid(lines:: AbstractVector{<:AbstractString}; bg:: Char = '.', sen
 	end
 end
 
+function nbors(i, j; diag:: Bool)
+	if diag
+		(
+			(i-1, j-1),
+			(i-1, j  ),
+			(i-1, j+1),
+			(i,   j+1),
+			(i+1, j+1),
+			(i+1, j  ),
+			(i+1, j-1),
+			(i,   j-1),
+		)
+	else
+		(
+			(i-1, j),
+			(i, j+1),
+			(i+1, j),
+			(i, j-1),
+		)
+	end
+end
+
 struct Windows
 	vector:: Union{AbstractVector, AbstractString}
 	winlen:: Integer

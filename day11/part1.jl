@@ -22,7 +22,7 @@ function blink(xs)
 	res
 end
 
-for i in 1:75
+for i in 1:25
 	input = blink(input)
 end
 

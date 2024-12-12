@@ -47,6 +47,8 @@ for i in 1:n
 		if !vis[i+1, j+1]
 			ch = grid[i+1, j+1]
 			hsides, vsides, area = dfs(i+1, j+1, ch)
+			
+			# was missing a sort!(vsides) here but it passed. maybe the dfs visits the cells in a way that makes it redundant? i don't think so...
 			sort!(hsides)
 			
 			previ = -10
@@ -66,7 +68,7 @@ for i in 1:n
 			prevj = -10
 			prevb = -1
 			vedges = 0
-			for ((i1, i2), j, is_i1_i) in hsides
+			for ((i1, i2), j, is_i1_i) in hsides # THIS SHOULD BE vsides OMG somehow it gave the correct answer anyway? wait no, vedges always = hedges actually lol
 				if i1 != previ || j != prevj + 1 || is_i1_i != prevb
 					vedges += 1
 				end

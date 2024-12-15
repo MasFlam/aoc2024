@@ -128,4 +128,12 @@ Starting day 3, I'm recording and posting solution videos: [playlist](https://ww
 		<td><code>01:05:24</code></td>
 		<td>3086</td>
 	</tr>
+	<tr>
+		<td align="center">15</td>
+		<td align="center"><a href="https://youtu.be/e_Ut_yPbGLg">YT</a></td>
+		<td><code>00:11:23</code></td>
+		<td>189</td>
+		<td><code>00:37:14</code></td>
+		<td>230</td>
+	</tr>
 </table>

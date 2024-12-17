@@ -1,0 +1,92 @@
+Program: 2,4, 1,1, 7,5, 1,5, 4,3, 0,3, 5,5, 3,0
+Pseudocode:
+do {
+	B = A % 8
+	B = B xor 1
+	C = A // 2^B
+	B = B xor 5
+	B = B xor C
+	A = A // 2^3
+	output B % 8
+} while (A != 0);
+
+AKA:
+
+do {
+	B = (A%8) xor 4 xor (  (A >> ((A%8) xor 1)) % 8  )
+	output B
+	A >>= 3
+} while (A != 0);
+
+so:
+B xor (A%8) xor 4 = (A >> ((X%8) xor 1)) % 8
+
+
+
+
+
+
+
+bst 4
+bxl 1
+cdv 5
+bxl 5
+bxc 3
+adv 3
+out 5
+jnz 0
+
+A,B,C -- registers
+
+while A != 0
+	B = A % 8
+	B = B xor 1
+	C = div(A, 2^B)
+	B = B xor 5
+	B = B xor C
+	A = div(A, 8)
+	output B % 8
+end
+
+while A != 0
+	B = A % 8
+	B = B xor 4 xor div(A, 2^(B xor 1))
+	A = div(A, 8)
+	output B % 8
+end
+
+while A != 0
+	B = A % 8
+	B = B xor 4 xor (A >> (B xor 1))
+	A = div(A, 8)
+	output B % 8
+end
+
+while A != 0
+	B = A%8 xor 4 xor (A >> (A%8 xor 1))
+	A = div(A, 8)
+	output B % 8
+end
+
+
+
+
+2 = (A%8 xor 4 xor div(A, 2^(A%8 xor 1))) % 8
+2 = (A%8 xor 4 xor (A >> (A%8 xor 1))) % 8
+2 = A%8 xor 4 xor ((A >> (A%8 xor 1)) % 8)
+6 = A%8 xor ((A >> (A%8 xor 1)) % 8)
+6 xor low3 = (A >> (low3 xor 1)) % 8
+
+0,0
+
+f(A, B) = (div(A, 8), xor(xor(B, 4), div(A, 2^B xor 1)))
+
+B[i] = xor(xor(B[i-1], 4), div(A[i-1], 2^B[i-1] xor 1))
+B[i] xor xor(B[i-1], 4) = div(A[i-1], 2^B[i-1] xor 1)
+B[i] xor B[i-1] xor 4 = div(A[i-1], 2^B[i-1] xor 1)
+
+B[i] = xor(xor(B[i-1], 4), div(A[i-1], 2^B[i-1] xor 1))
+B[n] = 0 = xor(xor(B[n-1], 4), div(A[n-1], 2^B[n-1] xor 1))
+
+
+B[i] xor B[i-1] xor 4 = div(A[i-1], 2^B[i-1] xor 1)

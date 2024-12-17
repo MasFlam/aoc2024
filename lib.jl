@@ -29,6 +29,18 @@ function makegrid(lines:: AbstractVector{<:AbstractString}; bg:: Char = '.', sen
 	end
 end
 
+function printgrid(io:: IO, grid:: AbstractMatrix{<:AbstractChar})
+	n, m = size(grid)
+	for i in 1:n
+		for j in 1:m
+			print(io, grid[i,j])
+		end
+		println(io)
+	end
+end
+
+printgrid(grid:: AbstractMatrix{<:AbstractChar}) = printgrid(stdout, grid)
+
 function nbors(i, j; diag:: Bool)
 	if diag
 		(
@@ -56,7 +68,7 @@ struct Windows
 	winlen:: Integer
 end
 
-# Returns an iterator going through all subarrays (or substrings) of length winlen.
+# Returns an iterable going through all subarrays (or substrings) of length winlen.
 windows(vector:: Union{AbstractVector, AbstractString}, winlen:: Integer) = Windows(vector, winlen)
 
 function Base.iterate(w:: Windows)
@@ -67,7 +79,7 @@ function Base.iterate(w:: Windows)
 	end
 end
 
-function Base.iterate(w:: Windows, idx:: Int)
+function Base.iterate(w:: Windows, idx:: Integer)
 	if idx + w.winlen - 1 <= length(w.vector)
 		(view(w.vector, idx:idx + w.winlen - 1), idx + 1)
 	else
@@ -76,3 +88,56 @@ function Base.iterate(w:: Windows, idx:: Int)
 end
 
 Base.length(w:: Windows) = max(0, length(w.vector) - w.winlen)
+
+struct Groups
+	vector:: Union{AbstractVector, AbstractString}
+	grplen:: Integer
+end
+
+# Returns an iterable going through subarrays (or substrings) of length grplen, one after another, non-overlapping.
+groups(vector:: Union{AbstractVector, AbstractString}, grplen:: Integer) = Groups(vector, grplen)
+
+function Base.iterate(g:: Groups)
+	if g.grplen <= length(g.vector)
+		(view(g.vector, 1:g.grplen), g.grplen + 1)
+	else
+		nothing
+	end
+end
+
+function Base.iterate(g:: Groups, idx:: Integer)
+	if idx + g.grplen - 1 <= length(g.vector)
+		(view(g.vector, idx:idx + g.grplen - 1), idx + g.grplen)
+	else
+		nothing
+	end
+end
+
+Base.length(g:: Groups) = div(length(g.vector), g.grplen)
+
+struct Vsplit
+	vector:: AbstractVector
+	pred:: Function
+end
+
+# Returns an iterable going through subarrays, splitting the vector by elements for which the predicate returns true.
+# To filter out empty subarrays, set the keyword argument keepempty to false.
+function vsplit(vector:: AbstractVector, pred:: Function; keepempty:: Bool = true)
+	vs = Vsplit(vector, pred)
+	keepempty ? vs : Iterators.filter(!isempty, vs)
+end
+
+function vsplit(vector:: AbstractVector, splitval; keepempty:: Bool = true)
+	vsplit(vector, x -> x == splitval, keepempty=keepempty)
+end
+
+function Base.iterate(vs:: Vsplit)
+	nextidx = findfirst(vs.pred, vs.vector)
+	isnothing(nextidx) ? (vs.vector, -1) : (view(vs.vector, 1:nextidx - 1), nextidx + 1)
+end
+
+function Base.iterate(vs:: Vsplit, idx:: Integer)
+	idx < 0 && return nothing
+	nextidx = findnext(vs.pred, vs.vector, idx)
+	isnothing(nextidx) ? (view(vs.vector, idx:length(vs.vector)), -1) : (view(vs.vector, idx:nextidx - 1), nextidx + 1)
+end

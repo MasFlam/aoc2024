@@ -2,6 +2,7 @@
 This year I've finally decided to try AoC and to try hard, so let's see how it goes.
 
 Starting day 3, I'm recording and posting solution videos: [playlist](https://www.youtube.com/playlist?list=PLeyexjd1tYAloabABjiTVKz-NUZp3YXGM).
+Except day 17, which I gave up on recording after an hour or so.
 
 <table>
 	<tr>
@@ -143,5 +144,13 @@ Starting day 3, I'm recording and posting solution videos: [playlist](https://ww
 		<td>2351</td>
 		<td><code>00:48:56</code></td>
 		<td>1376</td>
+	</tr>
+	<tr>
+		<td align="center">17</td>
+		<td align="center">—</td>
+		<td><code>00:19:39</code></td>
+		<td>1027</td>
+		<td><code>02:20:15</code></td>
+		<td>1827</td>
 	</tr>
 </table>

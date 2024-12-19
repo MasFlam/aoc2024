@@ -161,4 +161,12 @@ Except day 17, which I gave up on recording after an hour or so.
 		<td><code>00:15:22</code></td>
 		<td>731</td>
 	</tr>
+	<tr>
+		<td align="center">19</td>
+		<td align="center"><a href="https://youtu.be/q9DfasRHUCE">YT</a></td>
+		<td><code>00:04:55</code></td>
+		<td>425</td>
+		<td><code>00:09:35</code></td>
+		<td>589</td>
+	</tr>
 </table>

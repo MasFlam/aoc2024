@@ -63,6 +63,20 @@ function nbors(i, j; diag:: Bool)
 	end
 end
 
+function manhattan(ax, ay, bx, by; diag:: Bool = false)
+	if diag
+		dx = abs(ax-bx)
+		dy = abs(ay-by)
+		md = min(dx, dy)
+		dx + dy - md
+	else
+		abs(ax-bx) + abs(ay-by)
+	end
+end
+
+manhattan(ax, ay; diag:: Bool = false) = manhattan(ax, ay, 0, 0, diag=diag)
+manhattan(a:: Tuple{<:Any, <:Any}, b:: Tuple{<:Any, <:Any}; diag:: Bool = false) = manhattan(a..., b..., diag=diag)
+
 struct Windows
 	vector:: Union{AbstractVector, AbstractString}
 	winlen:: Integer

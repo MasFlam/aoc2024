@@ -1,0 +1,79 @@
+
+7 8 9
+4 5 6
+1 2 3
+. 0 A
+
+
+. ^ A
+< v >
+
+
+379A
+
+3 np =>   ^A      dp1 =>   <A,>A             dp2 =>   v<<A,>>^A,vA,^A                         dp3
+7 np =>   ^^<<A   dp1 =>   <A,A,v<A,A,>>^A   dp2 =>   v<<A,>>^A,A,v<A,<A,>>^A,A,vA,A,^<A,>A   dp3
+9 np =>   >>A     dp1 =>   vA,A,^A           dp2 =>   v<A,>^A,A,<A,>A                         dp3
+A np =>   vvvA    dp1 =>   v<A,A,A,>^A       dp2 =>   v<A,<A,>>^A,A,A,vA,^<A,>A               dp3
+vs:
+7 np =>   <<^^A   dp1 =>   v<<A,A,>^A,A,>A   dp2 =>   
+
+v<<A,>>^A,vA,^A
+v<<A,>>^A,A,v<A,<A,>>^A,A,vA,A,^<A,>A
+v<A,>^A,A,<A,>A
+v<A,<A,>>^A,A,A,vA,^<A,>A
+
+v<<A,>>^A,vA,^A,vv<A,>>^A,A,v<A,<A,>>^A,A,vA,A,^<A,>A,v<A,>^A,A,<A,>A,v<A,<A,>>^A,A,A,vA,^<A,>A,
+68 still!!!
+
+
+they say: <v<A>>^AvA^A<vA<AA>>^AAvA<^A>AAvA^A<vA>^AA<A>A<v<A>A>^AAAvA<^A>A dp3
+Which is dp3:
+	<v<A
+	>>^A
+	vA
+	^A
+	<vA
+	<A
+	A
+	>>^A
+	A
+	vA
+	<^A
+	>A
+	A
+	vA
+	^A
+	<vA
+	>^A
+	A
+	<A
+	>A
+	<v<A
+	>A
+	>^A
+	A
+	A
+	vA
+	<^A
+	>A
+Which is dp2:
+	<A
+	>A
+	v<<A
+	A
+	>^A
+	A
+	>A
+	vA
+	A
+	^A
+	<vA
+	A
+	A
+	>^A
+Which is dp1:
+	^A
+	<<^^A
+	>>A
+	vvvA

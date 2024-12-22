@@ -188,4 +188,12 @@ And day 21 for similar reasons.
 		<td><code>04:19:50</code></td>
 		<td>1850</td>
 	</tr>
+	<tr>
+		<td align="center">22</td>
+		<td align="center"><a href="https://youtu.be/-vp_0ml5Ta4">YT</a></td>
+		<td><code>00:07:28</code></td>
+		<td>852</td>
+		<td><code>00:26:57</code></td>
+		<td>671</td>
+	</tr>
 </table>

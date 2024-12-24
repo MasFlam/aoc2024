@@ -7,6 +7,8 @@ Except day 17 which I gave up on recording after an hour or so.
 
 And day 21 for similar reasons.
 
+Same with day 24.
+
 <table>
 	<tr>
 		<th rowspan="2">Day</th>
@@ -203,5 +205,13 @@ And day 21 for similar reasons.
 		<td>258</td>
 		<td><code>00:42:17</code></td>
 		<td>1916</td>
+	</tr>
+	<tr>
+		<td align="center">24</td>
+		<td align="center">—</td>
+		<td><code>00:19:42</code></td>
+		<td>1403</td>
+		<td><code>03:01:56</code></td>
+		<td>1675</td>
 	</tr>
 </table>

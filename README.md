@@ -214,4 +214,12 @@ Same with day 24.
 		<td><code>03:01:56</code></td>
 		<td>1675</td>
 	</tr>
+	<tr>
+		<td align="center">25</td>
+		<td align="center"><a href="https://youtu.be/19AkGdgbq3s">YT</a></td>
+		<td><code>00:06:53</code></td>
+		<td>319</td>
+		<td><code>00:07:12</code></td>
+		<td>287</td>
+	</tr>
 </table>
